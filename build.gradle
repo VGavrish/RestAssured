@@ -1,0 +1,74 @@
+
+plugins {
+    id("java")
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    // Залежність для REST Assured
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '+'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '+'
+
+    // Залежності для тестування
+    // https://mvnrepository.com/artifact/org.junit.jupiter
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.2'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.2'
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.2'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-suite', version: '1.9.3'
+
+    // Залежності для обробки JSON, якщо вони використовуються
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.17.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.17.0'
+
+    // Якщо ви хочете логувати HTTP запити та відповіді
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured-common
+    implementation group: 'io.rest-assured', name: 'rest-assured-common', version: '5.4.0'
+
+    // Залежність для cucumber
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.18.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: '7.18.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.18.0'
+
+    // Залежність для di
+    // https://mvnrepository.com/artifact/com.google.inject/guice
+    implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+    systemProperty 'env', 'qa'
+}
+
+task devTest(type: Test) {
+    useJUnitPlatform()
+    systemProperty 'env', 'dev'
+    doFirst {
+        println 'Running tests with dev environment'
+    }
+}
+
+task qaTest(type: Test) {
+    useJUnitPlatform()
+    systemProperty 'env', 'qa'
+    doFirst {
+        println 'Running tests with qa environment'
+    }
+}
