@@ -2,7 +2,6 @@ package stepdefinitions;
 
 import factories.UserFactory;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.restassured.http.Cookie;
 import io.restassured.response.Response;
 
@@ -21,10 +20,10 @@ public class AuthStepdefs extends BaseStepdefs {
         handleSessionCookie(response);
     }
 
-    @Then("^the response status code should be (\\d+)$")
-    public void checkStatusCode(int statusCode) {
-        verifyStatusCode(statusCode);
-    }
+//    @Then("^the response status code should be (\\d+)$")
+//    public void checkStatusCode(int statusCode) {
+//        verifyStatusCode(statusCode);
+//    }
 
     private void handleSessionCookie(Response response) {
         Cookie sessionCookie = cookiesStepdefs.getSessionCookieFromResponse(response);
