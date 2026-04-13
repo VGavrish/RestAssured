@@ -10,7 +10,6 @@ public class CookiesStepdefs extends BaseStepdefs {
     }
 
     public void setSessionCookie(Cookie sessionCookie) {
-        cookieManager.setCookies(new Cookies(sessionCookie));
         carsOperations.setSessionCookie(sessionCookie.getValue());
     }
 

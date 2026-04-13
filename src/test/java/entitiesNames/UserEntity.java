@@ -7,7 +7,7 @@ import static utils.EmailGenerator.generateRandomEmail;
 public enum UserEntity {
     NAME("newusername"),
     LASTNAME("newusersurname"),
-    EMAIL(EmailGenerator.generateRandomEmail()),
+    EMAIL(generateRandomEmail()),
     PASSWORD("UserPassword1!"),
     REPEAT_PASSWORD("UserPassword1!");
 

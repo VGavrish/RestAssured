@@ -1,10 +1,10 @@
 package config;
 
 import com.google.inject.AbstractModule;
+import operations.CookieManager;
 import operations.auth.AuthOperations;
 import operations.cars.CarsOperations;
 
-import java.net.CookieManager;
 
 public class ApiTestModule extends AbstractModule {
     @Override

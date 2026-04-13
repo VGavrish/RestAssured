@@ -11,7 +11,7 @@ public class EmailGenerator {
         StringBuilder localPart = new StringBuilder(EMAIL_LENGTH);
 
         for (int i = 0; i < EMAIL_LENGTH; i++) {
-            char randomChar = (char) ('a' + RANDOM.nextInt(26));
+            char randomChar = (char) ('a' + RandomUtils.RANDOM.nextInt(26));
             localPart.append(randomChar);
         }
 
