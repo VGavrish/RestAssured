@@ -43,6 +43,7 @@ It demonstrates a simple but structured approach to API test automation using:
 │       │   └── utils
 │       └── resources
 │           └── features
+```text
 
 Test Scenario
 
