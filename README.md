@@ -2,15 +2,11 @@
 
 This project is a training API automation framework built with **Java 17**, **Rest Assured**, **Cucumber**, **JUnit 5 Platform**, and **Gradle**.
 
-It demonstrates a simple but structured approach to API test automation using:
-- request/response handling with Rest Assured
-- BDD scenarios with Cucumber
-- step definitions and operations layers
-- JSON serialization/deserialization with Jackson
-- dependency injection with Guice
-- Gradle tasks for running tests in different environments
+It demonstrates a clean and scalable approach to API test automation using modern tools and best practices.
 
-## Tech Stack
+---
+
+## 🚀 Tech Stack
 
 - Java 17
 - Gradle 8.x
@@ -18,115 +14,112 @@ It demonstrates a simple but structured approach to API test automation using:
 - Cucumber 7.18.0
 - JUnit Platform Suite 1.10.2
 - Jackson 2.17.0
-- Guice 7.0.0
+- Google Guice 7.0.0
+- Allure Report
 
-## Project Structure
+---
 
-```text
-.
-├── build.gradle
-├── gradlew
-├── gradlew.bat
-├── settings.gradle.kts
-├── src
-│   ├── main
-│   └── test
-│       ├── java
-│       │   ├── config
-│       │   ├── entities
-│       │   ├── factories
-│       │   ├── hooks
-│       │   ├── operations
-│       │   ├── runners
-│       │   ├── setup
-│       │   ├── stepdefinitions
-│       │   └── utils
-│       └── resources
-│           └── features
-```text
+## 📌 Features
 
-Test Scenario
+- API testing with Rest Assured
+- BDD approach using Cucumber (Gherkin)
+- Clean layered architecture (steps → actions → requests)
+- JSON serialization/deserialization with Jackson
+- Dependency Injection with Guice
+- Environment-based configuration
+- Allure reporting
+- Gradle task execution
 
-The project currently contains a full CRUD scenario for car-related API operations:
+---
 
-set base URI
-register a new user
-extract session cookie
-get car models
-create a new car
-update car mileage
-delete the created car
+## 🧱 Project Structure
 
-The main feature file is:
-src/test/resources/features/restAssuredCrud.feature
+src
+├── main
+│ ├── java
+│ │ ├── config # Configuration classes (env, DI, etc.)
+│ │ ├── models # POJOs for request/response
+│ │ ├── requests # API request builders
+│ │ ├── actions # Business logic layer
+│ │ └── utils # Helpers and utilities
+│ │
+│ └── resources
+│ ├── application.properties
+│ └── environments
+│
+├── test
+│ ├── java
+│ │ ├── stepdefinitions # Cucumber steps
+│ │ ├── runners # Test runners
+│ │ └── hooks # Setup/teardown
+│ │
+│ └── resources
+│ ├── features # Gherkin feature files
+│ └── testdata # Test data
 
-Framework Design
-Step Definitions
 
-Cucumber step definitions contain the scenario flow and assertions.
+---
 
-Operations Layer
+## 🧪 Implemented Scenario
 
-API requests are separated into operation classes, for example:
+### Example: Get User
 
-AuthOperations
-CarsOperations
+```gherkin
+Feature: User API
 
-This keeps test logic cleaner and makes the framework easier to extend.
+  Scenario: Get user by ID
+    Given user with id 2 exists
+    When I send GET request to "/users/2"
+    Then response status should be 200
+    And response should contain user data
 
-Base API
+⚙️ Configuration
 
-A shared base API class is used to keep common request logic, including session cookie handling.
+You can configure environments using:
 
-Utilities
+src/main/resources/environments/
 
-Utility classes are used for:
+Example:
 
-JSON serialization/deserialization
-constants
-test data helpers
-How to Run Tests
-Run QA tests
-./gradlew qaTest
+dev.properties
+qa.properties
+prod.properties
 
-Run DEV tests
-./gradlew devTest
+▶️ How to Run Tests
+Run all tests:
+./gradlew clean test
+Run specific tests (by tag):
+./gradlew test -Dcucumber.filter.tags="@smoke"
 
-Run default test task
-./gradlew test
+📊 Allure Report
+Generate report:
+allure generate build/allure-results --clean -o allure-report
+Open report:
+allure serve build/allure-results
 
-Runner
-The framework uses a JUnit Platform Cucumber runner located in:
-src/test/java/runners/TestRunner.java
+🧩 Architecture Overview
+Feature → Step Definitions → Actions → Requests → API
+Steps – describe behavior (Cucumber)
+Actions – business logic
+Requests – API layer (Rest Assured)
+Models – request/response objects
 
-It is configured to:
+📦 Example Request
+given()
+    .baseUri(BASE_URL)
+    .pathParam("id", 2)
+.when()
+    .get("/users/{id}")
+.then()
+    .statusCode(200);
+💡 Best Practices Used
+Separation of concerns (clean architecture)
+Reusable request builders
+Centralized configuration
+Dependency injection
+BDD readable tests
+Scalable structure
 
-scan feature files from features
-use step definitions from stepdefinitions
-Environment
-
-The framework is prepared for environment-based execution through Gradle system properties:
-
-qa
-dev
-Current Status
-
-At this stage, the project includes:
-
-working Cucumber + Rest Assured integration
-a complete CRUD scenario for cars
-structured step definitions and operations
-Gradle-based execution
-Next Improvements
-
-Possible next steps:
-
-add Jenkins pipeline support with Jenkinsfile
-publish reports in CI
-add Allure integration for build reports
-separate test data into JSON files
-extend the framework with additional API modules
-add GraphQL subproject support
-Author
+📬 Author
 
 Vitalii Havrish
