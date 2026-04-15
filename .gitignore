@@ -40,3 +40,22 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# OS / misc
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local environment files
+local.properties
