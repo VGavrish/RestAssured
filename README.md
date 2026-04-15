@@ -30,36 +30,6 @@ It demonstrates a clean and scalable approach to API test automation using moder
 - Allure reporting
 - Gradle task execution
 
----
-
-## Project Structure
-
-```text
-.
-├── Jenkinsfile
-├── build.gradle
-├── gradlew
-├── gradlew.bat
-├── settings.gradle.kts
-└── src
-    ├── main
-    └── test
-        ├── java
-        │   ├── config
-        │   ├── entities
-        │   ├── factories
-        │   ├── hooks
-        │   ├── operations
-        │   ├── runners
-        │   ├── setup
-        │   ├── stepdefinitions
-        │   └── utils
-        └── resources
-            ├── features
-            └── testdata
-
----
-
 ## 🧪 Implemented Scenario
 
 ### Example: Get User
@@ -119,6 +89,38 @@ Centralized configuration
 Dependency injection
 BDD readable tests
 Scalable structure
+
+---
+
+## Project Structure
+
+```text
+.
+├── Jenkinsfile
+├── build.gradle
+├── gradlew
+├── gradlew.bat
+├── settings.gradle.kts
+└── src
+    ├── main
+    └── test
+        ├── java
+        │   ├── config
+        │   ├── entities
+        │   ├── factories
+        │   ├── hooks
+        │   ├── operations
+        │   ├── runners
+        │   ├── setup
+        │   ├── stepdefinitions
+        │   └── utils
+        └── resources
+            ├── features
+            └── testdata
+
+---
+
+
 
 📬 Author
 Vitalii Havrish
