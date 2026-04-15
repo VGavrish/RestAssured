@@ -32,31 +32,31 @@ It demonstrates a clean and scalable approach to API test automation using moder
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
-src
-├── main
-│ ├── java
-│ │ ├── config # Configuration classes (env, DI, etc.)
-│ │ ├── models # POJOs for request/response
-│ │ ├── requests # API request builders
-│ │ ├── actions # Business logic layer
-│ │ └── utils # Helpers and utilities
-│ │
-│ └── resources
-│ ├── application.properties
-│ └── environments
-│
-├── test
-│ ├── java
-│ │ ├── stepdefinitions # Cucumber steps
-│ │ ├── runners # Test runners
-│ │ └── hooks # Setup/teardown
-│ │
-│ └── resources
-│ ├── features # Gherkin feature files
-│ └── testdata # Test data
-
+```text
+.
+├── Jenkinsfile
+├── build.gradle
+├── gradlew
+├── gradlew.bat
+├── settings.gradle.kts
+└── src
+    ├── main
+    └── test
+        ├── java
+        │   ├── config
+        │   ├── entities
+        │   ├── factories
+        │   ├── hooks
+        │   ├── operations
+        │   ├── runners
+        │   ├── setup
+        │   ├── stepdefinitions
+        │   └── utils
+        └── resources
+            ├── features
+            └── testdata
 
 ---
 
@@ -121,5 +121,4 @@ BDD readable tests
 Scalable structure
 
 📬 Author
-
 Vitalii Havrish
